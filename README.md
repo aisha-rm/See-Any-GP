@@ -2,7 +2,7 @@
 
 **Description:**
 
-You are a patient trying to book an appointment with your GP (general practitioner - also family doctor) but you keep getting disappointed after queuing from 8am on the surgery appointments line as all appointments have been booked. You think - what if I could get an appointment with any GP without having to join the queue on the phone? This is where SeeAnyGP comes in: a service where you can sign up and see/access available GPs in your location and book appointments to fit your schedule.
+You are a patient trying to book an appointment with your GP (doctor) but you keep getting disappointed after queuing from 8am on the surgery appointments line as all appointments have been booked. You think - what if I could get an appointment with any GP without having to join the queue on the phone? This is where SeeAnyGP comes in: a service where you can sign up and see/access available GPs in your location and book appointments to fit your schedule.
 
 
 **Project Development Requirement**
