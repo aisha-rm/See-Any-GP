@@ -21,13 +21,14 @@ public class Appointment {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="date", nullable=false)
     private LocalDate date;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name="doctor_id", referencedColumnName = "id")
     private Doctor doctor;
-
-    @OneToOne(fetch = FetchType.EAGER)
+    
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name="patient_id", referencedColumnName = "id")
     private Patient patient;
 

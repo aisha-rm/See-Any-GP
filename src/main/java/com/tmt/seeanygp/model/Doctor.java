@@ -1,8 +1,11 @@
 package com.tmt.seeanygp.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,8 +27,8 @@ public class Doctor {
     @Column(name="gmc_number", updatable=false, unique=true, nullable=false)
     private int gmcNumber;
 
-    @Column(name="date_of_graduation", updatable=false)
-    private LocalDate dateOfGraduation;
+    @Column(name="graduation_year", updatable=false)
+    private LocalDate graduationYear;
 
     @Column(name="special_interests")
     private String specialInterests;
@@ -33,6 +36,10 @@ public class Doctor {
     @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name="person_id", referencedColumnName = "id")
     private Person person; 
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "doctor")
+    private List<Appointment> appointments;
 
     @Column(name = "created_on", updatable = false, nullable = false)
     private LocalDate createdOn;

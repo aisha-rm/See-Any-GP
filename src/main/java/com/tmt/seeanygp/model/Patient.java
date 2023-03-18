@@ -1,6 +1,7 @@
 package com.tmt.seeanygp.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -39,14 +40,18 @@ public class Patient {
 
     @Column(name="alcohol")
     private String alcohol;
+
+    @JsonIgnore
+    @Column(name="notes")
+    private String notes;
     
     @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name="person_id", referencedColumnName = "id")
     private Person person; 
 
     @JsonIgnore
-    @Column(name="notes")
-    private String notes;
+    @OneToMany(mappedBy = "patient")
+    List<Appointment> appointments;
 
     @Column(name = "created_on", updatable = false, nullable = false)
     private LocalDate createdOn;
