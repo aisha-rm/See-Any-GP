@@ -6,9 +6,9 @@ import com.tmt.seeanygp.model.Role;
 
 public interface RoleService {
     
-    Role getRole(Long RoleId);
-    Role saveRole(Role Role);
-    void deleteRole(Long RoleId);
-    Role updateRole(Role Role);
+    Role getRole(Long roleId);
+    Role saveRole(Role role);
+    void deleteRole(Long roleId);
+    Role updateRole(Role role);
     List<Role> getRoles();
 }

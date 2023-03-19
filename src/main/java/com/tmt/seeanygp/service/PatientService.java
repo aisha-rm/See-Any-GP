@@ -6,9 +6,9 @@ import com.tmt.seeanygp.model.Patient;
 
 public interface PatientService {
     
-    Patient getPatient(Long PatientId);
-    Patient savePatient(Patient Patient);
-    void deletePatient(Long PatientId);
-    Patient updatePatient(Patient Patient);
+    Patient getPatient(Long patientId);
+    Patient savePatient(Patient patient);
+    void deletePatient(Long patientId);
+    Patient updatePatient(Patient patient);
     List<Patient> getPatients();
 }

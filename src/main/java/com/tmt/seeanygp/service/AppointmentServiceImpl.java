@@ -2,11 +2,13 @@ package com.tmt.seeanygp.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tmt.seeanygp.exception.EntityNotFoundException;
 import com.tmt.seeanygp.model.Appointment;
 import com.tmt.seeanygp.repository.AppointmentRepository;
 
@@ -17,51 +19,48 @@ public class AppointmentServiceImpl implements AppointmentService {
     AppointmentRepository appointmentRepository;
 
     @Override
-    public Appointment getAppointment(Long doctorId, Long patientId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAppointment'");
+    public Appointment getAppointment(Long appointmentId) {
+        Optional<Appointment> appointment = appointmentRepository.findById(appointmentId);
+        return unwrapAppointment(appointment, appointmentId);
     }
 
     @Override
-    public Appointment saveAppointment(Appointment appointment, Long doctorId, Long patientId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveAppointment'");
+    public Appointment saveAppointment(Appointment appointment) {
+        return appointmentRepository.save(appointment);
     }
 
     @Override
-    public Appointment updateAppointment(Appointment appointment, Long doctorId, Long patientId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateAppointment'");
+    public Appointment updateAppointment(Appointment appointment) {
+        return appointmentRepository.save(appointment);
     }
 
     @Override
-    public void deleteAppointment(Long doctorId, Long patientId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteAppointment'");
+    public void deleteAppointment(Long appointmentId) {
+        appointmentRepository.deleteById(appointmentId);
     }
 
     @Override
     public Set<Appointment> getAllAppointments() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllAppointments'");
+        return (Set<Appointment>) appointmentRepository.findAll();
     }
 
     @Override
     public List<Appointment> getAppointmentByPatient(Long patientId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAppointmentByPatient'");
+        return appointmentRepository.findByPatientId(patientId);
     }
 
     @Override
     public List<Appointment> getAppointmentByDoctor(Long doctorId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAppointmentByDoctor'");
+        return appointmentRepository.findByDoctorId(doctorId);
     }
 
     @Override
     public List<Appointment> getAppointmentByDate(LocalDate date) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAppointmentByDate'");
+        return appointmentRepository.findByDate(date);
     }
     
+    static Appointment unwrapAppointment(Optional<Appointment> entity, Long appointmentId) {
+        if (entity.isPresent()) return entity.get();
+        else throw new EntityNotFoundException(appointmentId, Appointment.class);
+    }
 }

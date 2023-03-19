@@ -6,9 +6,10 @@ import com.tmt.seeanygp.model.User;
 
 public interface UserService {
     
-    User getUser(Long UserId);
-    User saveUser(User User);
-    void deleteUser(Long UserId);
-    User updateUser(User User);
+    User getUser(Long userId);
+    User getUserByUsername(String username);
+    User saveUser(User user);
+    void deleteUser(Long userId);
+    User updateUser(User user);
     List<User> getUsers();
 }

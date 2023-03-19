@@ -6,5 +6,6 @@ import com.tmt.seeanygp.model.Doctor;
 
 public interface DoctorRepository extends CrudRepository<Doctor, Long> {
     
+    
 }
 

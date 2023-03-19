@@ -37,14 +37,13 @@ public class Doctor {
     @JoinColumn(name="person_id", referencedColumnName = "id")
     private Person person; 
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "doctor")
-    private List<Appointment> appointments;
-
     @Column(name = "created_on", updatable = false, nullable = false)
     private LocalDate createdOn;
     
     @Column(name = "updated_on", nullable = false)
     private LocalDate updatedOn;
     
+    @JsonIgnore
+    @OneToMany(mappedBy = "doctor")
+    private List<Appointment> appointments;
 }

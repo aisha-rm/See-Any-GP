@@ -9,10 +9,10 @@ import com.tmt.seeanygp.model.Appointment;
 
 public interface AppointmentService {
 
-    Appointment getAppointment(Long doctorId, Long patientId);
-    Appointment saveAppointment(Appointment appointment, Long doctorId, Long patientId);
-    Appointment updateAppointment(Appointment appointment, Long doctorId, Long patientId);
-    void deleteAppointment(Long doctorId, Long patientId);
+    Appointment getAppointment(Long appointmentId);
+    Appointment saveAppointment(Appointment appointment);
+    Appointment updateAppointment(Appointment appointment);
+    void deleteAppointment(Long appointmentId);
     Set<Appointment> getAllAppointments(); 
     List<Appointment> getAppointmentByPatient(Long patientId);
     List<Appointment> getAppointmentByDoctor(Long doctorId);

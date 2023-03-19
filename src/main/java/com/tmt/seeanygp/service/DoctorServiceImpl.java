@@ -18,31 +18,31 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public Doctor getDoctor(Long doctorId) {
-       return new Doctor(); 
-       //doctorRepository.findById(doctorId);
+       Optional<Doctor> doctor = doctorRepository.findById(doctorId);
+       return unwrapDoctor(doctor, doctorId); 
     }
 
     @Override
     public Doctor saveDoctor(Doctor doctor) {
-        throw new UnsupportedOperationException("Unimplemented method 'saveDoctor'");
+        return doctorRepository.save(doctor);
     }
 
+    //delete doctor
     @Override
     public void deleteDoctor(Long doctorId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteDoctor'");
+        doctorRepository.deleteById(doctorId);
     }
 
+    //update doctor
     @Override
     public Doctor updateDoctor(Doctor doctor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateDoctor'");
+        return doctorRepository.save(doctor);
     }
 
+    //get all doctors
     @Override
     public List<Doctor> getDoctors() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getDoctors'");
+        return (List<Doctor>) doctorRepository.findAll();
     }
     
     static Doctor unwrapDoctor(Optional<Doctor> entity, Long id){
