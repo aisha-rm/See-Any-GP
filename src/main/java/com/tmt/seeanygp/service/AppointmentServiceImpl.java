@@ -3,8 +3,6 @@ package com.tmt.seeanygp.service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,8 +38,8 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public Set<Appointment> getAllAppointments() {
-        return (Set<Appointment>) appointmentRepository.findAll();
+    public List<Appointment> getAllAppointments() {
+        return (List<Appointment>) appointmentRepository.findAll();
     }
 
     @Override
