@@ -29,7 +29,7 @@ public class AppointmentController {
     
     @PostMapping("/save")
     public ResponseEntity<Appointment> saveAppointment(@RequestBody Appointment appointment) {
-        return null;
+        return new ResponseEntity<>(appointmentService.saveAppointment(appointment), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete/{id}")

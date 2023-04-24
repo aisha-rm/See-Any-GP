@@ -6,15 +6,16 @@ import java.util.List;
 import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Entity
 @Table(name="patient")
 public class Patient {
@@ -23,21 +24,27 @@ public class Patient {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    @NonNull
     @Column(name="medical_history")
     private String medicalHistory;
 
+    @NonNull
     @Column(name="medication")
     private String medication;
 
+    @NonNull
     @Column(name="allergies")
     private String allergies;
 
+    @NonNull                    
     @Column(name="family_history")
     private String familyHistory;
 
+    @NonNull
     @Column(name="smoking")
     private String smoking;
 
+    @NonNull
     @Column(name="alcohol")
     private String alcohol;
 
@@ -53,10 +60,10 @@ public class Patient {
     @OneToMany(mappedBy = "patient")
     List<Appointment> appointments;
 
-    @Column(name = "created_on", updatable = false, nullable = false)
+    @Column(name = "created_on", updatable = false) //nullable = false)
     private LocalDate createdOn;
     
-    @Column(name = "updated_on", nullable = false)
+    @Column(name = "updated_on")// nullable = false)
     private LocalDate updatedOn;
 
 }

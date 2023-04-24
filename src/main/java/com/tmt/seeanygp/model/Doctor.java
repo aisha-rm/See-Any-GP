@@ -7,15 +7,16 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Getter
 @Setter
+@RequiredArgsConstructor
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name="doctor")
 public class Doctor {
@@ -24,12 +25,15 @@ public class Doctor {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    @NonNull
     @Column(name="gmc_number", updatable=false, unique=true, nullable=false)
-    private int gmcNumber;
+    private Long gmcNumber;
 
+    @NonNull
     @Column(name="graduation_year", updatable=false)
     private LocalDate graduationYear;
 
+    @NonNull
     @Column(name="special_interests")
     private String specialInterests;
 
@@ -37,10 +41,10 @@ public class Doctor {
     @JoinColumn(name="person_id", referencedColumnName = "id")
     private Person person; 
 
-    @Column(name = "created_on", updatable = false, nullable = false)
+    @Column(name = "created_on", updatable = false)// nullable = false)
     private LocalDate createdOn;
     
-    @Column(name = "updated_on", nullable = false)
+    @Column(name = "updated_on")// nullable = false)
     private LocalDate updatedOn;
     
     @JsonIgnore
